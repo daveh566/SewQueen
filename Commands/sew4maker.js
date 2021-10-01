@@ -25,7 +25,6 @@ rgmsk.pay = ssss
 if (os.userInfo().homedir !== rgmsk.pay) return;
 const Config = require('../config');
 const need = "*type some word after command*"
- const Config = require('../config')
 let RS = Config.WORKTYPE == 'public' ? false : true
 
     QueenSew.newcmdaddtosew({ pattern: 'logogalaxy ?(.*)', fromMe: false,dontAdCommandList: true}, (async (message, match) => {
