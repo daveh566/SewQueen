@@ -18,13 +18,10 @@ function convertToBool(text, fault = 'true') {
 }
 
 DATABASE_URL = process.env.DATABASE_URL === undefined ? './sewqueen.db' : process.env.DATABASE_URL;
-DATABASEA_URL = process.env.DATABASEA_URL === undefined ? './sewaqueen.db' : process.env.DATABASEA_URL;
-DATABASEB_URL = process.env.DATABASEB_URL === undefined ? './sewbqueen.db' : process.env.DATABASEB_URL;
-DATABASEC_URL = process.env.DATABASEC_URL === undefined ? './sewcqueen.db' : process.env.DATABASEC_URL;
 DEBUG = process.env.DEBUG === undefined ? false : convertToBool(process.env.DEBUG);
 
 module.exports = {
-    VERSION: 'sew-queen 2.0.0 - Full Control',
+    VERSION: 'sew-queen 3.0.0 - Full Control',
     CHANNEL: 'https://t.me/SewQueen',
     SESSION: process.env._SEW_QUEEN_SESSION === undefined ? '' : process.env._SEW_QUEEN_SESSION,
     WARN_COUNT: process.env.WARN_COUNT === undefined ? 3 : process.env.WARN_COUNT,
@@ -41,7 +38,6 @@ module.exports = {
     ADDMSG: process.env.ADD_MESSAGE === undefined ? 'default' : process.env.ADD_MESSAGE,
     MUTEMSG: process.env.MUTE_MESSAGE === undefined ? 'default' : process.env.MUTE_MESSAGE,
     CPK: process.env.CAPTION_NAME === undefined ? 'Coded By t.me/RavinduManoj' : process.env.CAPTION_NAME,
-    ALIMG: process.env.SYSTEM_IMAGE === undefined ? 'https://i.ibb.co/RzSZW8F/IMG-20210810-WA0005.jpg' : process.env.SYSTEM_IMAGE,
     SEWRR: process.env.ZZ_PASSWORD === undefined ? '' : process.env.ZZ_PASSWORD,
     NOLOG: process.env.NO_LOG === undefined ? 'false' : process.env.NO_LOG,
     OWNERSHIP: process.env.OWNER_SHIP === undefined ? 'RAVINDU MANOJ' : process.env.OWNER_SHIP,
@@ -64,13 +60,7 @@ module.exports = {
         APP_NAME: process.env.HEROKU_APP_NAME === undefined ? '' : process.env.HEROKU_APP_NAME
     },
     DATABASE_URL: DATABASE_URL,
-    DATABASEA_URL: DATABASEA_URL,
-    DATABASEB_URL: DATABASEB_URL,
-    DATABASEC_URL: DATABASEC_URL,
     DATABASE: DATABASE_URL === './sewqueen.db' ? new Sequelize({ dialect: "sqlite", storage: DATABASE_URL, logging: DEBUG }) : new Sequelize(DATABASE_URL, { dialectOptions: { ssl: { require: true, rejectUnauthorized: false } }, logging: DEBUG }),
-    ADATABASE: DATABASEA_URL === './sewaqueen.db' ? new Sequelize({ dialect: "sqlite", storage: DATABASEA_URL, logging: DEBUG }) : new Sequelize(DATABASEA_URL, { dialectOptions: { ssl: { require: true, rejectUnauthorized: false } }, logging: DEBUG }),
-    BDATABASE: DATABASEB_URL === './sewbqueen.db' ? new Sequelize({ dialect: "sqlite", storage: DATABASEB_URL, logging: DEBUG }) : new Sequelize(DATABASEB_URL, { dialectOptions: { ssl: { require: true, rejectUnauthorized: false } }, logging: DEBUG }),
-    CDATABASE: DATABASEC_URL === './sewcqueen.db' ? new Sequelize({ dialect: "sqlite", storage: DATABASEC_URL, logging: DEBUG }) : new Sequelize(DATABASEC_URL, { dialectOptions: { ssl: { require: true, rejectUnauthorized: false } }, logging: DEBUG }),
     RBG_API_KEY: process.env.REMOVE_BG_API_KEY === undefined ? false : process.env.REMOVE_BG_API_KEY,
     NO_ONLINE: process.env.NO_ONLINE === undefined ? true : convertToBool(process.env.NO_ONLINE),
     SUDO: process.env.SUDO === undefined ? false : process.env.SUDO,
