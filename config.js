@@ -25,6 +25,7 @@ module.exports = {
     CHANNEL: 'https://t.me/SewQueen',
     SESSION: process.env._SEW_QUEEN_SESSION === undefined ? '' : process.env._SEW_QUEEN_SESSION,
     ANTİLİNK: process.env.ANTİ_LİNK === undefined ? 'false' : process.env.ANTİ_LİNK,
+    FULLSEW: process.env.FULL_SEW === undefined ? 'false' : process.env.FULL_SEW,
     WARN_COUNT: process.env.WARN_COUNT === undefined ? 3 : process.env.WARN_COUNT,
     WARNMSG: process.env.WARN_MSG === undefined ? 'bye 🤏' : process.env.WARN_MSG,
     PROXY: process.env.PROXY === undefined ? 'false' : process.env.PROXY,
