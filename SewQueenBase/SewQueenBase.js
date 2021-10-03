@@ -1,3 +1,15 @@
+/*
+Codded by @Ravindu Manoj
+
+Telegram: t.me/RavinduManoj
+Facebook: https://www.facebook.com/ravindu.manoj.79
+
+Licensed under the  GPL-3.0 License;
+you may not use this file except in compliance with the License.
+
+SewQueen - Ravindu Manoj
+*/
+
 function _0x37ab89(_0x191e8e, _0x542020, _0x5cabc8, _0x22cd15, _0x2c56f5) {
     return _0x20da(_0x2c56f5 - -0x36b, _0x542020);
 }
