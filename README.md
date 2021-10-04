@@ -2,6 +2,6 @@
 
 
 
-SEW QUEEN 3.0 
-WILL AVAILABLE
-6.00 p.m
+# SEW QUEEN 3.0 
+# WILL AVAILABLE
+# Soon....
