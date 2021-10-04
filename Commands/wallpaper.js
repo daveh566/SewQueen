@@ -33,7 +33,6 @@ var wr_usage = ''
 if (Config.LANG == 'SI') pic = 'අහඹු ලෙස එනිම් ෆොටෝ සෙන්ඩ් කරයි.', wr_usage = ' ', giff = 'අහඹු ලෙස එනිම් වීඩියෝ සෙන්ඩ් කරයි'
 if (Config.LANG == 'EN') pic = 'Sends random anime photo.', wr_usage = ' ', giff = 'Sends random anime video.'
 
-const { thumbnail } = require('../media/thumbnail');
 QueenSew.newcmdaddtosew({pattern: 'anime ?(.*)', fromMe: wk, desc: pic, usage: '.anime pic / .anime gif'}, (async (message, match) => {
  if (match[1] == 'pic') {
     const imgthumb = await thumbnail()
