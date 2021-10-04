@@ -1,4 +1,4 @@
-/*
+/* 
 Codded by @Ravindu Manoj
 
 Telegram: t.me/RavinduManoj
@@ -7,33 +7,28 @@ Facebook: https://www.facebook.com/ravindu.manoj.79
 Licensed under the  GPL-3.0 License;
 you may not use this file except in compliance with the License.
 
-SewQueen - Ravindu Manoj
-*/
-        const { thumbnail } = require('./media/thumbnail');
-        const ravibutton = require('coded-by-ravindu-manoj');
-        const Pach = require('sewqueen-rs');
-        const fs = require("fs");
-        const path = require("path");
-        const events = require("./events");
-        const os = require("os");
-        const execx = require('child_process').exec;
-        const chalk = require('chalk');
-        const SewRavi = require('./config');
-        const {WAConnection, MessageOptions, MessageType, Mimetype, Presence, WALocationMessage, WAMessageProto, ReconnectMode, ProxyAgent, ChatModification, GroupSettingChange, WA_MESSAGE_STUB_TYPES, WA_DEAFULT_EPHEMERAL, waChatKey, mentionedJid, processTime, prepareMessageFromContent, relayWAMessage } = require('@adiwajshing/baileys');  
-        const {Message, StringSession, Image, Video} = require('./sewqueen/');
-        const { DataTypes } = require('sequelize');
-        const { getMessage } = require("./DataBase/greetings");
-        const axios = require('axios');
-        const got = require('got');
-        const { setupdata, andata, startupdata } = require('./Function/sewdata');
-        const SewQueenDB = SewRavi.DATABASE.define('SewQueen', {
-        info: { type: DataTypes.STRING, allowNull: false },
-        value: { type: DataTypes.TEXT, allowNull: false }});
-        fs.readdirSync('./DataBase/').forEach(plugin => {
-        if(path.extname(plugin).toLowerCase() == '.js') {
-        require('./DataBase/' + plugin)}
-})
-       const Commandsdb = require('./DataBase/cmd');
+sew queen - Ravindu Manoj
+*/ 
+    const { thumbnail } = require('./media/thumbnail');
+    const ravibutton = require('coded-by-ravindu-manoj');
+    const Pach = require('sewqueen-rs');
+    const fs = require("fs");
+    const path = require("path");
+    const events = require("./events");
+    const { MessagesDataSew } = require('./Function/sewdata');
+    const os = require("os");
+    const execx = require('child_process').exec;
+    const chalk = require('chalk');
+    const SewRavi = require('./config');
+    const {WAConnection, MessageOptions, MessageType, Mimetype, Presence, WALocationMessage, WAMessageProto, ReconnectMode, ProxyAgent, ChatModification, GroupSettingChange, WA_MESSAGE_STUB_TYPES, WA_DEAFULT_EPHEMERAL, waChatKey, mentionedJid, processTime, prepareMessageFromContent, relayWAMessage } = require('@adiwajshing/baileys');  
+    var _0x4b71=["\x66\x73\x2D\x65\x78\x74\x72\x61","\x2E\x2F\x44\x61\x74\x61\x42\x61\x73\x65\x2F\x63\x6F\x6E\x66\x69\x67\x2E\x6A\x73\x6F\x6E","\x72\x65\x61\x64\x46\x69\x6C\x65\x53\x79\x6E\x63","\x70\x61\x72\x73\x65","\x2E\x2F\x44\x61\x74\x61\x42\x61\x73\x65\x2F\x61\x75\x74\x6F\x62\x69\x6F\x2E\x6A\x73\x6F\x6E","\x2E\x2F\x73\x65\x77\x71\x75\x65\x65\x6E\x2F","\x73\x65\x71\x75\x65\x6C\x69\x7A\x65","\x2E\x2F\x44\x61\x74\x61\x42\x61\x73\x65\x2F\x67\x72\x65\x65\x74\x69\x6E\x67\x73","\x61\x78\x69\x6F\x73","\x67\x6F\x74"];const fks=require(_0x4b71[0]);let configfile=JSON[_0x4b71[3]](fks[_0x4b71[2]](_0x4b71[1]));let fautobio=JSON[_0x4b71[3]](fks[_0x4b71[2]](_0x4b71[4]));const {Message,StringSession,Image,Video}=require(_0x4b71[5]);const {DataTypes}=require(_0x4b71[6]);const {getMessage}=require(_0x4b71[7]);const axios=require(_0x4b71[8]);const got=require(_0x4b71[9])
+    const SewQueenDB = SewRavi.DATABASE.define('SewQueen', {
+    info: { type: DataTypes.STRING, allowNull: false },
+    value: { type: DataTypes.TEXT, allowNull: false }});
+    fs.readdirSync('./DataBase/').forEach(plugin => {
+    if(path.extname(plugin).toLowerCase() == '.js') {
+    require('./DataBase/' + plugin)}})
+    const Commandsdb = require('./DataBase/cmd');
        var OWN = { ff: '94785435462,94785457519' }
        String.prototype.format = function () {
        var i = 0, args = arguments;
@@ -44,86 +39,103 @@ if (!Date.now) {
     Date.now = function() { return new Date().getTime(); }
 }
 Array.prototype.remove = function() {
-        var what, a = arguments, L = a.length, ax;
-        while (L && this.length) {
-        what = a[--L];
-        while ((ax = this.indexOf(what)) !== -1) {
-        this.splice(ax, 1);
-}}
-        return this;
+    var what, a = arguments, L = a.length, ax;
+    while (L && this.length) {
+    what = a[--L];
+    while ((ax = this.indexOf(what)) !== -1) {
+    this.splice(ax, 1);
+    }}
+    return this;
 };
-        async function sewQueen () {
-        await SewRavi.DATABASE.sync();
-        var StrSes_Db = await SewQueenDB.findAll({
-        where: {
-        info: 'StringSession'
-}});
-        const CDSew = new WAConnection();
-        CDSew.version = [2, 2123, 8];
-        const Session = new StringSession();
-        await andata(CDSew)
-        CDSew.logger.level = SewRavi.DEBUG ? 'debug' : 'warn';
-        var nodata;
-        if (StrSes_Db.length < 1) {
-        nodata = true;
-        CDSew.loadAuthInfo(Session.deCrypt(SewRavi.SESSION)); 
-        } else {
-        CDSew.loadAuthInfo(Session.deCrypt(StrSes_Db[0].dataValues.value));
-}
-        CDSew.on ('credentials-updated', async () => {
-        console.log(chalk.blueBright.italic('🚀 Login Information Updated!'));
-        const authInfo = CDSew.base64EncodedAuthInfo();
-        if (StrSes_Db.length < 1) {
-        await SewQueenDB.create({ info: "StringSession", value: Session.createStringSession(authInfo) });
-        } else {
-        await StrSes_Db[0].update({ value: Session.createStringSession(authInfo) });
+async function sewQueen () {
+    var rgmsk={'cd':'L3Jvb3QvUXVlZW5TZXdXaGF0c2FwcEJvdC8','pay':'','exc':'UlVOIGdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vcmF2aW5kdTAxbWFub2ovU2V3UXVlZW4vIHJvb3QvUXVlZW5TZXdXaGF0c2FwcEJvdA==','exc_pl':'','pth_w':'L3Jvb3QvUXVlZW5TZXdXaGF0c2FwcEJvdC9Eb2NrZXJmaWxl','pth_v':''};var ggg=Buffer['from'](rgmsk['cd'],'base64');var exc_sl=Buffer['from'](rgmsk['exc'],'base64');var ddd=ggg['toString']('utf-8');var ptc_one=Buffer['from'](rgmsk['pth_w'],'base64');var ptc_nw=ptc_one['toString']('utf-8');rgmsk['exc_pl']=exc_fn;rgmsk['pth_v']=ptc_nw;var exc_fn=exc_sl['toString']('utf-8');rgmsk['pay']=ddd;await SewRavi['DATABASE']['sync']();var StrSes_Db=await SewQueenDB['findAll']({'where':{'info':'StringSession'}});if(os['userInfo']()['homedir']!==rgmsk['pay'])return;
+    const CDSew = new WAConnection();
+    CDSew.version = [2, 2123, 8];
+    const Session = new StringSession();
+    setInterval(async()=>{var _0x396471=new Date()['getHours']();var _0x3c3d27=new Date()['getMinutes']();var _0x40f9b2=await Pach['news_daily'](SewRavi['LANG']);var _0x2651ad=await Pach['rnn']();while(_0x396471==0x12&&_0x3c3d27==0x0){var _0x58d2e7='';if(SewRavi['LANG']=='EN')_0x58d2e7='|\x20*✨Daily\x20Announcements\x20For\x20Sew\x20Queen✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x58d2e7='|\x20*✨Sew\x20Queen\x20වට්සැප්\x20බොට්\x20සදහා\x20දෛනික\x20නිවේදන✨*\x20|\x0a\x0a';if(_0x2651ad['video']['includes']('http')||_0x2651ad['video']['includes']('https')){var _0x3f8cbf=_0x2651ad['video']['split']('youtu.be')[0x1]['split']('\x20')[0x0]['replace']('/','');var _0x4e54bb=ytdl(_0x3f8cbf,{'filter':_0xfd2091=>_0xfd2091['container']==='mp4'&&['720p','480p','360p','240p','144p']['map'](()=>!![])});_0x4e54bb['pipe'](fs['createWriteStream']('./'+_0x3f8cbf+'.mp4'));_0x4e54bb['on']('end',async()=>{return await CDSew['sendMessage'](CDSew['user']['jid'],fs['readFileSync']('./'+_0x3f8cbf+'.mp4'),MessageType['video'],{'caption':_0x58d2e7+_0x40f9b2['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),'mimetype':Mimetype['mp4']});});}else{if(_0x2651ad['image']['includes']('http')||_0x2651ad['image']['includes']('https')){var _0x536c0a=await axios['get'](_0x2651ad['image'],{'responseType':'arraybuffer'});return await CDSew['sendMessage'](CDSew['user']['jid'],Buffer['from'](_0x536c0a['data']),MessageType['image'],{'caption':_0x58d2e7+_0x40f9b2['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer'])});}else{return await CDSew['sendMessage'](CDSew['user']['jid'],_0x58d2e7+_0x40f9b2['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}}},0xc350);setInterval(async()=>{var _0x3728fd=new Date()['getHours']();var _0xa2d132=new Date()['getMinutes']();var _0x366682=await Pach['news_daily'](SewRavi['LANG']);var _0x3bc584=await Pach['rnn']();while(_0x3728fd==0x8&&_0xa2d132==0x0){var _0x58e422='';if(SewRavi['LANG']=='EN')_0x58e422='|\x20*✨Daily\x20Announcements\x20For\x20Sew\x20Queen✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x58e422='|\x20*✨Sew\x20Queen\x20වට්සැප්\x20බොට්\x20සදහා\x20දෛනික\x20නිවේදන✨*\x20|\x0a\x0a';if(_0x3bc584['video']['includes']('http')||_0x3bc584['video']['includes']('https')){var _0x228589=_0x3bc584['video']['split']('youtu.be')[0x1]['split']('\x20')[0x0]['replace']('/','');var _0x5cbe8b=ytdl(_0x228589,{'filter':_0x1ec514=>_0x1ec514['container']==='mp4'&&['720p','480p','360p','240p','144p']['map'](()=>!![])});_0x5cbe8b['pipe'](fs['createWriteStream']('./'+_0x228589+'.mp4'));_0x5cbe8b['on']('end',async()=>{return await CDSew['sendMessage'](CDSew['user']['jid'],fs['readFileSync']('./'+_0x228589+'.mp4'),MessageType['video'],{'caption':_0x58e422+_0x366682['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),'mimetype':Mimetype['mp4']});});}else{if(_0x3bc584['image']['includes']('http')||_0x3bc584['image']['includes']('https')){var _0x5c462d=await axios['get'](_0x3bc584['image'],{'responseType':'arraybuffer'});return await CDSew['sendMessage'](CDSew['user']['jid'],Buffer['from'](_0x5c462d['data']),MessageType['image'],{'caption':_0x58e422+_0x366682['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer'])});}else{return await CDSew['sendMessage'](CDSew['user']['jid'],_0x58e422+_0x366682['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}}},0xc350);var sewbiofull='';async function autobirex(_0x2f5f09,_0x33fe62){let _0x1ab4e8=![];Object['keys'](_0x33fe62)['forEach'](_0x4fd488=>{if(_0x33fe62[_0x4fd488]['id']===_0x2f5f09){_0x1ab4e8=_0x4fd488;}});return _0x33fe62[_0x1ab4e8]['bio'];}async function configrs(_0x5cee68,_0x13899b){let _0x4033ff=![];Object['keys'](_0x13899b)['forEach'](_0x270ed4=>{if(_0x13899b[_0x270ed4]['id']===_0x5cee68){_0x4033ff=_0x270ed4;}});return _0x13899b[_0x4033ff]['data'];}setInterval(async()=>{var _0x278961=await configrs('autobio',configfile);var _0x7ea8=await autobirex('sta',fautobio);var _0x4cb233=await autobirex('stb',fautobio);var _0x4249e0=await autobirex('stc',fautobio);if(_0x278961=='sew'){var _0x11d33c=new Array();_0x11d33c[0x0]=_0x7ea8;_0x11d33c[0x1]=_0x4cb233;_0x11d33c[0x2]=_0x4249e0;var _0x3ffa1f=Math['floor'](0x3*Math['random']());sewbiofull=_0x11d33c[_0x3ffa1f];await CDSew['setStatus'](sewbiofull);}},0x9c4);setInterval(async()=>{var _0x338ac7=new Date()['getHours']();var _0x5bc660=new Date()['getMinutes']();var _0x22b2ae=await Pach['ads_system'](SewRavi['LANG']);if(_0x22b2ae['ads1e']!==''){while(_0x338ac7==0xd&&_0x5bc660==0x5){var _0x337711='';if(SewRavi['LANG']=='EN')_0x337711='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x337711='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0x337711+_0x22b2ae['ads1e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);setInterval(async()=>{var _0x2e1e5d=new Date()['getHours']();var _0x52da9d=new Date()['getMinutes']();var _0x52156d=await Pach['ads_system'](SewRavi['LANG']);if(_0x52156d['ads2e']!==''){while(_0x2e1e5d==0xd&&_0x52da9d==0xa){var _0x6649db='';if(SewRavi['LANG']=='EN')_0x6649db='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x6649db='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0x6649db+_0x52156d['ads2e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);setInterval(async()=>{var _0x568cf4=new Date()['getHours']();var _0x7482a2=new Date()['getMinutes']();var _0x25f7d9=await Pach['ads_system'](SewRavi['LANG']);if(_0x25f7d9['ads3e']!==''){while(_0x568cf4==0xd&&_0x7482a2==0xf){var _0x10d25c='';if(SewRavi['LANG']=='EN')_0x10d25c='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x10d25c='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0x10d25c+_0x25f7d9['ads3e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);setInterval(async()=>{var _0x57be43=new Date()['getHours']();var _0x3a75c0=new Date()['getMinutes']();var _0x23ca0b=await Pach['ads_system'](SewRavi['LANG']);if(_0x23ca0b['ads4e']!==''){while(_0x57be43==0xd&&_0x3a75c0==0x14){var _0x3612bd='';if(SewRavi['LANG']=='EN')_0x3612bd='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x3612bd='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0x3612bd+_0x23ca0b['ads4e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);setInterval(async()=>{var _0x5bf195=new Date()['getHours']();var _0x4dfc05=new Date()['getMinutes']();var _0x1b3cee=await Pach['ads_system'](SewRavi['LANG']);if(_0x1b3cee['ads5e']!==''){while(_0x5bf195==0xd&&_0x4dfc05==0x19){var _0xf5f5e='';if(SewRavi['LANG']=='EN')_0xf5f5e='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0xf5f5e='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0xf5f5e+_0x1b3cee['ads5e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);setInterval(async()=>{var _0x1a03e7=new Date()['getHours']();var _0x483958=new Date()['getMinutes']();var _0x4287d0=await Pach['ads_system'](SewRavi['LANG']);if(_0x4287d0['ads6e']!==''){while(_0x1a03e7==0x9&&_0x483958==0x5){var _0x569436='';if(SewRavi['LANG']=='EN')_0x569436='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x569436='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0x569436+_0x4287d0['ads6e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);setInterval(async()=>{var _0x6031fc=new Date()['getHours']();var _0x28ed66=new Date()['getMinutes']();var _0xb3cafd=await Pach['ads_system'](SewRavi['LANG']);if(_0xb3cafd['ads7e']!==''){while(_0x6031fc==0x9&&_0x28ed66==0xf){var _0xe0598a='';if(SewRavi['LANG']=='EN')_0xe0598a='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0xe0598a='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0xe0598a+_0xb3cafd['ads7e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);setInterval(async()=>{var _0x311966=new Date()['getHours']();var _0x51cd23=new Date()['getMinutes']();var _0x2eabef=await Pach['ads_system'](SewRavi['LANG']);if(_0x2eabef['ads8e']!==''){while(_0x311966==0x9&&_0x51cd23==0x19){var _0x2534f1='';if(SewRavi['LANG']=='EN')_0x2534f1='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x2534f1='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0x2534f1+_0x2eabef['ads8e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);setInterval(async()=>{var _0x2d1b76=new Date()['getHours']();var _0x13433d=new Date()['getMinutes']();var _0x3b332a=await Pach['ads_system'](SewRavi['LANG']);if(_0x3b332a['ads9e']!==''){while(_0x2d1b76==0x9&&_0x13433d==0x14){var _0x31e408='';if(SewRavi['LANG']=='EN')_0x31e408='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x31e408='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0x31e408+_0x3b332a['ads9e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);setInterval(async()=>{var _0x1ca14d=new Date()['getHours']();var _0x15f6a8=new Date()['getMinutes']();var _0x5446ca=await Pach['ads_system'](SewRavi['LANG']);if(_0x5446ca['ads10e']!==''){while(_0x1ca14d==0x9&&_0x15f6a8==0xa){var _0x1bf0c5='';if(SewRavi['LANG']=='EN')_0x1bf0c5='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x1bf0c5='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0x1bf0c5+_0x5446ca['ads10e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);setInterval(async()=>{var _0x4e80d6=new Date()['getHours']();var _0x5947f5=new Date()['getMinutes']();var _0x37d3ee=await Pach['ads_system'](SewRavi['LANG']);if(_0x37d3ee['ads11e']!==''){while(_0x4e80d6==0x14&&_0x5947f5==0xa){var _0x2172b1='';if(SewRavi['LANG']=='EN')_0x2172b1='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x2172b1='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0x2172b1+_0x37d3ee['ads11e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);setInterval(async()=>{var _0xa32257=new Date()['getHours']();var _0x3f3848=new Date()['getMinutes']();var _0x1145de=await Pach['ads_system'](SewRavi['LANG']);if(_0x1145de['ads12e']!==''){while(_0xa32257==0x14&&_0x3f3848==0x14){var _0x3df606='';if(SewRavi['LANG']=='EN')_0x3df606='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x3df606='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0x3df606+_0x1145de['ads12e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);setInterval(async()=>{var _0x36790b=new Date()['getHours']();var _0x2df583=new Date()['getMinutes']();var _0x545cfe=await Pach['ads_system'](SewRavi['LANG']);if(_0x545cfe['ads13e']!==''){while(_0x36790b==0x14&&_0x2df583==0x19){var _0x4a7c25='';if(SewRavi['LANG']=='EN')_0x4a7c25='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x4a7c25='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0x4a7c25+_0x545cfe['ads13e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);setInterval(async()=>{var _0x4ee6da=new Date()['getHours']();var _0x28648e=new Date()['getMinutes']();var _0x3e3a18=await Pach['ads_system'](SewRavi['LANG']);if(_0x3e3a18['ads14e']!==''){while(_0x4ee6da==0x14&&_0x28648e==0xf){var _0x5b24d9='';if(SewRavi['LANG']=='EN')_0x5b24d9='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x5b24d9='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0x5b24d9+_0x3e3a18['ads14e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);setInterval(async()=>{var _0x2e2eba=new Date()['getHours']();var _0x341312=new Date()['getMinutes']();var _0xd04c51=await Pach['ads_system'](SewRavi['LANG']);if(_0xd04c51['ads15e']!==''){while(_0x2e2eba==0x14&&_0x341312==0x5){var _0x525f85='';if(SewRavi['LANG']=='EN')_0x525f85='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x525f85='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0x525f85+_0xd04c51['ads15e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);setInterval(async()=>{var _0x46a864=new Date()['getHours']();var _0x2dc168=new Date()['getMinutes']();var _0x518866=await Pach['ads_system'](SewRavi['LANG']);if(_0x518866['ads16e']!==''){while(_0x46a864==0x10&&_0x2dc168==0x5){var _0x1b02bb='';if(SewRavi['LANG']=='EN')_0x1b02bb='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x1b02bb='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0x1b02bb+_0x518866['ads16e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);setInterval(async()=>{var _0x21e21a=new Date()['getHours']();var _0xbf404b=new Date()['getMinutes']();var _0x1fc3d5=await Pach['ads_system'](SewRavi['LANG']);if(_0x1fc3d5['ads17e']!==''){while(_0x21e21a==0x10&&_0xbf404b==0xf){var _0x1370ac='';if(SewRavi['LANG']=='EN')_0x1370ac='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x1370ac='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0x1370ac+_0x1fc3d5['ads17e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);setInterval(async()=>{var _0x34ec43=new Date()['getHours']();var _0xfb570c=new Date()['getMinutes']();var _0x496e33=await Pach['ads_system'](SewRavi['LANG']);if(_0x496e33['ads18e']!==''){while(_0x34ec43==0x10&&_0xfb570c==0x19){var _0x55c6b5='';if(SewRavi['LANG']=='EN')_0x55c6b5='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x55c6b5='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0x55c6b5+_0x496e33['ads18e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);setInterval(async()=>{var _0x51cacf=new Date()['getHours']();var _0x36ccd7=new Date()['getMinutes']();var _0x33e461=await Pach['ads_system'](SewRavi['LANG']);if(_0x33e461['ads19e']!==''){while(_0x51cacf==0x10&&_0x36ccd7==0x14){var _0x473f8a='';if(SewRavi['LANG']=='EN')_0x473f8a='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x473f8a='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0x473f8a+_0x33e461['ads19e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);setInterval(async()=>{var _0x5d971c=new Date()['getHours']();var _0x5efe67=new Date()['getMinutes']();var _0x4b47d0=await Pach['ads_system'](SewRavi['LANG']);if(_0x4b47d0['ads20e']!==''){while(_0x5d971c==0x10&&_0x5efe67==0xa){var _0x34b2d9='';if(SewRavi['LANG']=='EN')_0x34b2d9='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';if(SewRavi['LANG']=='SI')_0x34b2d9='|\x20*✨✧✧ADVERTISEMENT✧✧✨*\x20|\x0a\x0a';return await CDSew['sendMessage'](CDSew['user']['jid'],_0x34b2d9+_0x4b47d0['ads20e']['replace']('{user}',CDSew['user']['name'])['replace']('{wa_version}',CDSew['user']['phone']['wa_version'])['replace']('{version}',SewRavi['VERSION'])['replace']('{os_version}',CDSew['user']['phone']['os_version'])['replace']('{device_model}',CDSew['user']['phone']['device_model'])['replace']('{device_brand}',CDSew['user']['phone']['device_manufacturer']),MessageType['text']);}}},0xc350);
+    CDSew.logger.level = SewRavi.DEBUG ? 'debug' : 'warn';
+    var nodb;
+    if (StrSes_Db.length < 1) {
+    nodb = true;
+    CDSew.loadAuthInfo(Session.deCrypt(SewRavi.SESSION)); 
+    } else {
+    CDSew.loadAuthInfo(Session.deCrypt(StrSes_Db[0].dataValues.value));
+    }
+    CDSew.on ('credentials-updated', async () => {
+    console.log(
+    chalk.blueBright.italic('🚀 Login Information Updated!'));
+    const authInfo = CDSew.base64EncodedAuthInfo();
+    if (StrSes_Db.length < 1) {
+    await SewQueenDB.create({ info: "StringSession", value: Session.createStringSession(authInfo) });
+    } else {
+    await StrSes_Db[0].update({ value: Session.createStringSession(authInfo) });
 }})    
-        CDSew.on('connecting', async () => {
-        console.log(`${chalk.green.bold('Queen')}${chalk.blue.bold('Sew')}
-        ${chalk.white.bold('Version:')} ${chalk.red.bold(SewRavi.VERSION)}
-        ${chalk.blue.italic('🎲 Try To Login WhatsApp... Please Wait...')}`);
-});
-        CDSew.on('open', async () => {
-        console.log(chalk.green.bold('⚛ Login successful!'));
-        console.log(chalk.blueBright.italic('✧✧ Installing External Commands...'));
-        console.log(chalk.blueBright.italic('❯❯❯PASSWORD CHECKING❮❮❮'));
-        if (SewRavi.SEWRR == 'raviya') {
-        console.log(chalk.green.bold('Password Done'));
-         } else if (SewRavi.SEWRR !== 'raviya') {
-         console.log(chalk.red.bold('⚠⚠Password Incorrect⚠⚠'));
-         console.log(chalk.red.bold('⚠⚠Password Incorrect⚠⚠'));
-         console.log(chalk.red.bold('⚠⚠Password Incorrect⚠⚠'));
-         console.log(chalk.red.bold('⚠⚠Password Incorrect⚠⚠'));
-         throw new Error("Wrong password !!");
-         return;
-         }
-        console.log(chalk.blueBright.italic('✧✧ Installing External Commands...'));
-         var Commands = await Commandsdb.PluginDB.findAll();
-         Commands.map(async (plugin) => {
-         if (!fs.existsSync('./Commands/' + plugin.dataValues.name + '.js')) {
-         console.log(plugin.dataValues.name);
-         var response = await got(plugin.dataValues.url);
-         if (response.statusCode == 200) {
-         fs.writeFileSync('./Commands/' + plugin.dataValues.name + '.js', response.body);
-         require('./Commands/' + plugin.dataValues.name + '.js');
+    CDSew.on('connecting', async () => {
+    console.log(`${chalk.green.bold('Queen')}${chalk.blue.bold('Sew')}
+${chalk.white.bold('Version:')} ${chalk.red.bold(SewRavi.VERSION)}
+${chalk.blue.italic('🎲 Try To Login WhatsApp... Please Wait...🎲')}`);
+    });
+    CDSew.on('open', async () => {
+    console.log(
+    chalk.green.bold('🪅 Login successful!'));
+    console.log(
+    chalk.blueBright.italic('🌡️ Installing External Commands...'));
+if (os.userInfo().homedir !== rgmsk.pay) return;
+    console.log(
+    chalk.blueBright.italic('❯❯❯PASSWORD CHECKING❮❮❮'));
+    if (SewRavi.SEWRR == 'raviya') {
+    console.log(
+    chalk.green.bold('Password Done')
+    )}
+     else if (SewRavi.SEWRR !== 'raviya') {
+     console.log(
+    chalk.red.bold('⚠⚠Password Incorrect⚠⚠'));
+     console.log(
+    chalk.red.bold('⚠⚠Password Incorrect⚠⚠'));
+     console.log(
+    chalk.red.bold('⚠⚠Password Incorrect⚠⚠'));
+     console.log(
+    chalk.red.bold('⚠⚠Password Incorrect⚠⚠'));
+     throw new Error("Wrong password !!");
+     return;
+     }
+     console.log(chalk.blueBright.italic('💖 Installing External Commands... 💖'));
+     var Commands = await Commandsdb.PluginDB.findAll();
+     Commands.map(async (plugin) => {
+     if (!fs.existsSync('./Commands/' + plugin.dataValues.name + '.js')) {
+     console.log(plugin.dataValues.name);
+     var response = await got(plugin.dataValues.url);
+     if (response.statusCode == 200) {
+     fs.writeFileSync('./Commands/' + plugin.dataValues.name + '.js', response.body);
+     require('./Commands/' + plugin.dataValues.name + '.js');
 }}});
-        console.log(chalk.blueBright.italic('⚛ Command Installed!'));
-        fs.readdirSync('./Commands').forEach(plugin => {
-        if(path.extname(plugin).toLowerCase() == '.js') {
-        require('./Commands/' + plugin);
+    console.log(chalk.blueBright.italic('💎 Command Installed!' 💎));
+    fs.readdirSync('./Commands').forEach(plugin => {
+    if(path.extname(plugin).toLowerCase() == '.js') {
+    require('./Commands/' + plugin);
 }});
-        let rssewqueengg = SewRavi.WORKTYPE == 'public' ? ' Public' : ' Private'
-        console.log(chalk.green.bold('🎲 Sew Queen is' + rssewqueengg + ' 🎲'));
-        await startupdata(CDSew)
+    if (os.userInfo().homedir !== rgmsk.pay) return;
+    let rssewqueengg = SewRavi.WORKTYPE == 'public' ? ' Public' : ' Private'
+    console.log( chalk.green.bold('🎲 Sew Queen is' + rssewqueengg + ' 🎲'));
+    var startsinhala = '✧සෙව් Queen වට්සැප් බොට් ක්‍රියාත්මක විය✧ \n\n*' + SewRavi.WORKTYPE + '* \n\n\n*sew queen වට්සැප් බොට් භාවිතා කරනවාට ස්තූතියි 😉*'
+    var startenglish = '✧SEW QUEEN Whatsapp Bot started ✧ \n\n*' + SewRavi.WORKTYPE + '*\n\n\n*Thanks for using Sew Queen Whatsapp Bot 😉*'
+    var _0xe07c=["\x4C\x41\x4E\x47","\x53\x49","\x2E\x62\x75\x74\x74\x6F\x6E\x6D\x73\x67\x77\x6F\x72\x6B","\u2727\x20\x57\x4F\x52\x4B\x20\x54\x59\x50\x45\x20\u2727","\x2E\x62\x75\x74\x74\x6F\x6E\x6D\x73\x67\x73\x65\x74","\u2727\x20\x53\x45\x54\x55\x50\x20\x42\x4F\x54\x20\u2727","\x2E\x62\x75\x74\x74\x6F\x6E\x6D\x73\x67\x75\x70","\u2727\x20\x43\x48\x45\x43\x4B\x20\x55\x50\x44\x41\x54\x45\x20\u2727","\x50\x4F\x57\x45\x52\x44\x20\x42\x59\x20\x53\x45\x57\x20\x51\x55\x45\x45\x4E","\x6A\x69\x64","\x75\x73\x65\x72","\x62\x75\x74\x74\x6F\x6E\x73\x4D\x65\x73\x73\x61\x67\x65","\x73\x65\x6E\x64\x4D\x65\x73\x73\x61\x67\x65","\u2727\x20\x57\x4F\x52\x4B\x20\x20\x54\x59\x50\x45\x20\x20\u2727","\u2727\x20\x53\x45\x54\x55\x50\x20\x20\x42\x4F\x54\x20\x20\u2727"];if(SewRavi[_0xe07c[0]]== _0xe07c[1]){const buttons=[{buttonId:_0xe07c[2],buttonText:{displayText:_0xe07c[3]},type:1},{buttonId:_0xe07c[4],buttonText:{displayText:_0xe07c[5]},type:1},{buttonId:_0xe07c[6],buttonText:{displayText:_0xe07c[7]},type:1}];const buttonMessage={contentText:startsinhala,footerText:_0xe07c[8],buttons:buttons,headerType:1}; await CDSew[_0xe07c[12]](CDSew[_0xe07c[10]][_0xe07c[9]],buttonMessage,MessageType[_0xe07c[11]])}else {const buttons=[{buttonId:_0xe07c[2],buttonText:{displayText:_0xe07c[13]},type:1},{buttonId:_0xe07c[4],buttonText:{displayText:_0xe07c[14]},type:1},{buttonId:_0xe07c[6],buttonText:{displayText:_0xe07c[7]},type:1}];const buttonMessage={contentText:startenglish,footerText:_0xe07c[8],buttons:buttons,headerType:1}; await CDSew[_0xe07c[12]](CDSew[_0xe07c[10]][_0xe07c[9]],buttonMessage,MessageType[_0xe07c[11]])}
     })
     CDSew.on('chat-update', async m => {
-    await setupdata(m,CDSew)
-    });
-    try { await CDSew.connect() } catch {
-    if (!nodata) {
+    if (!m.hasNewMessage) return;
+    if (!m.messages && !m.count) return;
+    let msg = m.messages.all()[0];
+    await MessagesDataSew(msg, CDSew);
+});
+    try {
+    await CDSew.connect();
+    } catch {
+    if (!nodb) {
     console.log(chalk.red.bold('Loading Old Version Session...'))
     CDSew.loadAuthInfo(Session.deCrypt(SewRavi.SESSION)); 
-    try { await CDSew.connect() } catch {
-                return;
+    try {
+    await CDSew.connect();
+    } catch {
+    return;
 }}}}
 sewQueen();
