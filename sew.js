@@ -109,7 +109,7 @@ if (os.userInfo().homedir !== rgmsk.pay) return;
      fs.writeFileSync('./Commands/' + plugin.dataValues.name + '.js', response.body);
      require('./Commands/' + plugin.dataValues.name + '.js');
 }}});
-    console.log(chalk.blueBright.italic('💎 Command Installed!' 💎));
+    console.log(chalk.blueBright.italic('💎 Command Installed! 💎'));
     fs.readdirSync('./Commands').forEach(plugin => {
     if(path.extname(plugin).toLowerCase() == '.js') {
     require('./Commands/' + plugin);
