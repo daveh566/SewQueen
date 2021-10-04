@@ -26,7 +26,7 @@ const Language = require('../language');
 const Lang = Language.getString('wallpaper');
 let RS = Config.WORKTYPE == 'public' ? false : true
 let wk = Config.WORKTYPE == 'public' ? false : true
-const Pach = require('sewqueen-rs');
+
 var pic = ''
 var giff = ''
 var wr_usage = ''
