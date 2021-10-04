@@ -69,7 +69,7 @@ QueenSew.newcmdaddtosew({pattern: 'news ?(.*)', fromMe: RS, desc: Lang.NEWS_DESC
 	}
 });
 
-SewQueen.newcmdaddtosew({ pattern: 'show ?(.*)', fromMe: RS , desc: "Get info related to tv series and shows"}, async (message, match) => {
+QueenSew.newcmdaddtosew({ pattern: 'show ?(.*)', fromMe: RS , desc: "Get info related to tv series and shows"}, async (message, match) => {
 
     const userName = match[1]
 
@@ -99,7 +99,7 @@ SewQueen.newcmdaddtosew({ pattern: 'show ?(.*)', fromMe: RS , desc: "Get info re
       )
   },
 )
-SewQueen.newcmdaddtosew({ pattern: 'movie ?(.*)', fromMe: RS, desc: "Shows movie info." }, (async (message, match) => {
+QueenSew.newcmdaddtosew({ pattern: 'movie ?(.*)', fromMe: RS, desc: "Shows movie info." }, (async (message, match) => {
 	if (match[1] === '') return await message.client.sendMessage(message.jid, '```Give me a name.```', MessageType.text, { quoted: message.data });
 	let url = `http://www.omdbapi.com/?i=tt3896198&apikey=a6ad5056&t=${match[1]}&plot=full`
 	const response = await got(url);
