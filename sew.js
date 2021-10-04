@@ -8,6 +8,7 @@ Licensed under the  GPL-3.0 License;
 you may not use this file except in compliance with the License.
 
 sew queen - Ravindu Manoj
+
 */ 
 (function (_0xf3cd95, _0x170440) {
     function _0x5f690c(_0x4dbe67, _0x5188e8, _0x55500a, _0x3c73c6, _0x2bf843) {
