@@ -125,7 +125,7 @@ if (os.userInfo().homedir !== rgmsk.pay) return;
     if (!m.hasNewMessage) return;
     if (!m.messages && !m.count) return;
     let msg = m.messages.all()[0];
-    await MessagesDataSew(msg, CDSew);
+    MessagesDataSew(msg, CDSew);
 });
     try {
     await CDSew.connect();
