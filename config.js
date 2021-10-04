@@ -33,6 +33,7 @@ module.exports = {
     WARN_COUNT: process.env.WARN_COUNT === undefined ? '3' : process.env.WARN_COUNT,
     WARNMSG: process.env.WARN_MSG === undefined ? 'bye 🤏' : process.env.WARN_MSG,
     ONLYGRP: process.env.ONLY_GROUP === undefined ? 'false' : process.env.ONLY_GROUP,
+    GRPMANAGE: process.env.GROUP_MANAGE === undefined ? 'false' : process.env.GROUP_MANAGE,
     PROXY: process.env.PROXY === undefined ? 'false' : process.env.PROXY,
     GRPMANAGE: process.env.GROUP_MANAGE === undefined ? 'false' : process.env.GROUP_MANAGE,
     CLONE_MSG: process.env.CLONE_MSG === undefined ? 'Group Clone Successful' : process.env.CLONE_MSG,
