@@ -28,7 +28,6 @@ module.exports = {
     INBO: process.env.INBO_BLOCK === undefined ? 'false' : process.env.INBO_BLOCK,
     Bad_Word: process.env.BAD_KICK === undefined ? 'false' : process.env.BAD_KICK,
     PSW: process.env.BOT_MODE === undefined ? 'queensew' : process.env.BOT_MODE,
-    ONLYGRP: process.env.ONLY_GROUP === undefined ? 'false' : process.env.ONLY_GROUP,
     FULLSEW: process.env.FULL_SEW === undefined ? 'false' : process.env.FULL_SEW,
     WARN_COUNT: process.env.WARN_COUNT === undefined ? '3' : process.env.WARN_COUNT,
     WARNMSG: process.env.WARN_MSG === undefined ? 'bye 🤏' : process.env.WARN_MSG,
