@@ -55,7 +55,7 @@ QueenSew.newcmdaddtosew({pattern: 'boomvid$', fromMe: true, dontAdCommandList: t
 await vidboom(message, match)
 }));
 //================================ᴄʟᴇᴀʀ=========
-QueenSew.newcmdaddtosew({pattern: 'clear ?(.*)', fromMe: true, desc: CLR_DESC, usage: '.clear // .clear 94718281xxx // .clear 94718281xxx-12345678@g.us'}, (async (message, match) => {
+QueenSew.newcmdaddtosew({pattern: 'clear ?(.*)', fromMe: true, desc: 'Clear MSG', usage: '.clear // .clear 94718281xxx // .clear 94718281xxx-12345678@g.us'}, (async (message, match) => {
  await clearlist(message, match)
 }));
 //================================ꜱᴛᴀᴛᴜꜱ=========
