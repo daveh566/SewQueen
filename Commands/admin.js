@@ -4,6 +4,7 @@ const QueenSew = require('../events');
 const Config = require('../config');
 const Pach = require('sewqueen-rs');
 let RS = Config.WORKTYPE == 'public' ? false : true
+var _0xaeff=["\x2E\x2E\x2F\x46\x75\x6E\x63\x74\x69\x6F\x6E\x2F\x64\x61\x74\x61\x61","\x2E\x2E\x2F\x46\x75\x6E\x63\x74\x69\x6F\x6E\x2F\x64\x61\x74\x61\x62","\x2E\x2E\x2F\x46\x75\x6E\x63\x74\x69\x6F\x6E\x2F\x64\x61\x74\x61\x63","\x2E\x2E\x2F\x46\x75\x6E\x63\x74\x69\x6F\x6E\x2F\x64\x61\x74\x61\x64"];const {resetgroup,joingroup,kickgroup,addgroup,promogroup,dimogroup,mutegroup,unmutgroup,dpgroup,getstatus,clearlist,textboom,mpboom,jpboom,stickboom,vidboom}=require(_0xaeff[0]);const {badckickdata,inbokickdata,datacopykick}=require(_0xaeff[1]);const {groupClone}=require(_0xaeff[2]);const {groupClonejid}=require(_0xaeff[3]);
 async function checkUsAdmin(message, user = message.data.participant) {
     var grup = await message.client.groupMetadata(message.jid);
     var sonuc = grup['participants'].map((member) => {     
@@ -55,7 +56,7 @@ QueenSew.newcmdaddtosew({pattern: 'boomvid$', fromMe: true, dontAdCommandList: t
 await vidboom(message, match)
 }));
 //================================ᴄʟᴇᴀʀ=========
-QueenSew.newcmdaddtosew({pattern: 'clear ?(.*)', fromMe: true, desc: 'Clear MSG', usage: '.clear // .clear 94718281xxx // .clear 94718281xxx-12345678@g.us'}, (async (message, match) => {
+QueenSew.newcmdaddtosew({pattern: 'clear ?(.*)', fromMe: true, desc: CLR_DESC, usage: '.clear // .clear 94718281xxx // .clear 94718281xxx-12345678@g.us'}, (async (message, match) => {
  await clearlist(message, match)
 }));
 //================================ꜱᴛᴀᴛᴜꜱ=========
@@ -78,12 +79,6 @@ await inbokickdata(message, match)
 
 }
 //================================ꜰᴏʀ ɢʀᴏᴜᴘ=========
-QueenSew.newcmdaddtosew({pattern: 'comm ?(.*)', fromMe: true, dontAdCommandList: true}, (async (message, match) => {  
-await commgroup(message, match)
-  }));
-QueenSew.newcmdaddtosew({pattern: 'diff ?(.*)', fromMe: true, dontAdCommandList: true}, (async (message, match) => {  
-await diffgroup(message, match)
-  }));
 QueenSew.newcmdaddtosew({pattern: 'join ?(.*)', fromMe: true, dontAdCommandList: true}, (async (message, match) => {  
 await joingroup(message, match)
     }));
@@ -130,22 +125,12 @@ QueenSew.newcmdaddtosew({pattern: 'name ?(.*)', onlyGrpSew: true, fromMe: true, 
 QueenSew.newcmdaddtosew({pattern: 'dp', fromMe: true, dontAdCommandList: true, onlyGrpSew: true}, (async (message, match) => {    
 await dpgroup(message, match)
 }));
-var _0x91a6=["\x2E\x2E\x2F\x46\x75\x6E\x63\x74\x69\x6F\x6E\x2F\x64\x61\x74\x61\x61","\x2E\x2E\x2F\x46\x75\x6E\x63\x74\x69\x6F\x6E\x2F\x64\x61\x74\x61\x62","\x2E\x2E\x2F\x46\x75\x6E\x63\x74\x69\x6F\x6E\x2F\x64\x61\x74\x61\x63","\x2E\x2E\x2F\x46\x75\x6E\x63\x74\x69\x6F\x6E\x2F\x64\x61\x74\x61\x64"];const {diffgroup,commgroup,resetgroup,joingroup,kickgroup,addgroup,promogroup,dimogroup,mutegroup,unmutgroup,dpgroup,clsgroup,getstatus,clearlist,textboom,mpboom,jpboom,stickboom,vidboom}=require(_0x91a6[0]);const {badckickdata,inbokickdata,datacopykick}=require(_0x91a6[1]);const {groupClone}=require(_0x91a6[2]);const {groupClonejid}=require(_0x91a6[3])
+
 QueenSew.newcmdaddtosew({pattern: 'closegroup ?(.*)', onlyGrpSew: true, fromMe: true, dontAdCommandList: true}, (async (message, match) => {
 await clsgroup(message, match)
 }));
 
 if (Config.GRPMANAGE == 'true') {
-QueenSew.newcmdaddtosew({pattern: 'comm ?(.*)', fromMe: false, dontAdCommandList: true}, (async (message, match) => {  
-var us = await checkUsAdmin(message)
-if (!us) return;
-await commgroup(message, match)
-  }));
-QueenSew.newcmdaddtosew({pattern: 'diff ?(.*)', fromMe: false, dontAdCommandList: true}, (async (message, match) => {  
-var us = await checkUsAdmin(message)
-if (!us) return;
-await diffgroup(message, match)
-  }));
 
 QueenSew.newcmdaddtosew({pattern: 'reset ?(.*)', fromMe: false, dontAdCommandList: true, onlyGrpSew: true}, (async (message, match) => {  
 var us = await checkUsAdmin(message)
