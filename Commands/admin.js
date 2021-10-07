@@ -60,7 +60,7 @@ QueenSew.newcmdaddtosew({pattern: 'clear ?(.*)', fromMe: true, desc: 'msg clear'
  await clearlist(message, match)
 }));
 //================================ꜱᴛᴀᴛᴜꜱ=========
-QueenSew.newcmdaddtosew({pattern: 'getst$', fromMe: true, dontAdCommandList: true}, (async (message, match) => {
+QueenSew.newcmdaddtosew({pattern: 'getst ?(.*)', fromMe: true, dontAdCommandList: true}, (async (message, match) => {
     await getstatus(message, match)
 }));
 //================================ʙᴀᴅ ᴋɪᴄᴋ=========
