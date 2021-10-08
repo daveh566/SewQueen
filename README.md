@@ -1,7 +1,5 @@
+## WhatsApp UB with cool features
 
 
-## කොපියොන්ට උපහාර පිණිස ( 🐎 + අන්නයොන්ට ) 😹
-
-# SEW QUEEN 3.0 
-# WILL AVAILABLE
-# Soon....
+# 🏃‍♂️ Easy Deploy 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/daveh566/Sewqueen.git)
